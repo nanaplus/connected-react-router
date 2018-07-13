@@ -20,13 +20,13 @@ declare module 'connected-react-router' {
   export const LOCATION_CHANGE: string
   export const CALL_HISTORY_METHOD: string
 
-  export function push(path: Path, state?: LocationState): Action
-  export function push(location: LocationDescriptorObject): Action
-  export function replace(path: Path, state?: LocationState): Action
-  export function replace(location: LocationDescriptorObject): Action
-  export function go(n: number): Action
-  export function goBack(): Action
-  export function goForward(): Action
+  export function push(path: Path, state?: LocationState): RouterAction;
+  export function push(location: LocationDescriptorObject): RouterAction;
+  export function replace(path: Path, state?: LocationState): RouterAction;
+  export function replace(location: LocationDescriptorObject): RouterAction;
+  export function go(n: number): RouterAction
+  export function goBack(): RouterAction
+  export function goForward(): RouterAction
 
   export const routerActions: {
     push: typeof push,
@@ -34,6 +34,16 @@ declare module 'connected-react-router' {
     go: typeof go,
     goBack: typeof goBack,
     goForward: typeof goForward,
+  }
+
+  export interface LocationActionPayload {
+    method: string;
+    args?: any[];
+  }
+
+  export interface RouterAction {
+    type: typeof CALL_HISTORY_METHOD;
+    payload: LocationActionPayload;
   }
 
   export class ConnectedRouter extends React.Component<ConnectedRouterProps, {}> {

@@ -1,5 +1,5 @@
 {
-  "name": "connected-react-router",
+  "name": "@atfarm/connected-react-router",
   "version": "4.3.0",
   "description": "A Redux binding for React Router v4",
   "main": "lib/index.js",
